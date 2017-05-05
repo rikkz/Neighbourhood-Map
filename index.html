@@ -10,13 +10,17 @@
 	<div class = "container1">
 		<div class = "options-box">
 			<h1> Neighbourhood Map</h1>
+			<div data-bind = "visible : error">
+				<p data-bind = "text : errorMessage"></p>
+			</div>
 			<input id = "show-listings" type="button" value="Show" data-bind = "click : showMarkers">
 			<input id = "hide-listings" type="button" value="Hide" data-bind = "click : hideMarkers">
 			<h2>List of Restaurant</h2>
-			<ul data-bind = "foreach : reslist">
-				<li databind = "text : $index"></li>
+			<input class="searchbar" type="search" name="search" placeholder="Choose Location" data-bind="value: searchQuery, valueUpdate: 'keyup'">
+			<div id = "scroller" style="overflow-y: scroll; height:400px;">
+			<ul data-bind="foreach: list , visible : ( error != true )">
+				<li data-bind="text: title , click : openInfoWindow"></li>
 			</ul>
-				
 			</div>
 		</div>
 
@@ -31,8 +35,9 @@
 	<!-- External JS FILE -->
 	<script src = "js/app.js"></script>
 	<!-- USING GOOGLE MAP AND API -->
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD17JWoofsNPjRVluaOquXmh_4W_UD4eU0&libraries=places&callback=initMap"
-    async defer></script>
+	<script async defer 
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD17JWoofsNPjRVluaOquXmh_4W_UD4eU0&libraries=places&callback=initMap" onerror = "mapError()">
+	</script>
 	
 </body>
 </html>
