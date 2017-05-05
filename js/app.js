@@ -37,6 +37,7 @@ function fetchRestaurant() {
  			locations.push( l );
  			var marker = new google.maps.Marker({
  				position: { lat , lng },
+                map: map,
  				title: metadata[  i  ].name,
  				phoneno :metadata[i].contact.phone,
  				address : metadata[i].location.address,
@@ -64,9 +65,9 @@ function openInfoWindow( marker ) {
 		{	
 			find_marker = markers[ i ];
 		}
-		markers[ i ].setMap( null );
+		//markers[ i ].setMap( null );
 	}
-	find_marker.setMap( map );
+	//find_marker.setMap( map );
 	addInfoWindow( find_marker , infowindow );
 }
 
@@ -142,14 +143,20 @@ var appViewModel = {
 		//console.log( query );
 		for( var i = 0 ; i < markers.length ; i++ )
 		{
-			markers[ i ].setMap( null );
+			//markers[ i ].setMap( null );
 		}
 		for( var i = 0 ; i < locations.length ; i++ )
 		{
 			if( locations[ i ].title.toLowerCase().indexOf( query.toLowerCase()) >=0 )
 			{
+                markers[ i ].setMap( map );
 				appViewModel.list.push( locations[ i ] );
-			}	
+			}
+            else
+            {
+                markers[ i ].setMap( null );
+            }    
+
 		}	
 	},
 }
