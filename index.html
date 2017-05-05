@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Neighbour Hood Map </title>
+	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" type="text/css" href="css/styles.css">
+</head>
+<body>
+	<div class = "container1">
+		<div class = "options-box">
+			<h1> Neighbourhood Map</h1>
+			<input id = "show-listings" type="button" value="Show" data-bind = "click : showMarkers">
+			<input id = "hide-listings" type="button" value="Hide" data-bind = "click : hideMarkers">
+			<h2>List of Restaurant</h2>
+			<ul data-bind = "foreach : reslist">
+				<li databind = "text : $index"></li>
+			</ul>
+				
+			</div>
+		</div>
+
+	<div id = "map"></div>
+	</div>
+
+
+	<!-- JQUERY FOR AJAX REQUEST -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <!-- KO Librabry  -->
+	<script src = "js/libs/knockout-3.2.0.js"></script>
+	<!-- External JS FILE -->
+	<script src = "js/app.js"></script>
+	<!-- USING GOOGLE MAP AND API -->
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD17JWoofsNPjRVluaOquXmh_4W_UD4eU0&libraries=places&callback=initMap"
+    async defer></script>
+	
+</body>
+</html>
