@@ -17,7 +17,7 @@ var metadata;
 function mapError() {
 	console.log( "Erro come here");
 	appViewModel.error( true );
-	appViewModel.errorMessage("Could't load the map")
+	appViewModel.errorMessage("Could't load the map");
 }
 function fetchRestaurant() {
 	$.ajax({
@@ -91,7 +91,7 @@ function addInfoWindow( marker , infowindow ) {
 }	
 
 function animateCurrentMarker( marker ){
-	marker.setIcon('http://maps.google.com/mapfiles/ms/icons/green-dot.png')
+	marker.setIcon('http://maps.google.com/mapfiles/ms/icons/green-dot.png');
 	marker.setAnimation(google.maps.Animation.BOUNCE);
 }
 
@@ -141,10 +141,6 @@ var appViewModel = {
 	searchingQuery: function(query){
 		appViewModel.list.removeAll();
 		//console.log( query );
-		for( var i = 0 ; i < markers.length ; i++ )
-		{
-			//markers[ i ].setMap( null );
-		}
 		for( var i = 0 ; i < locations.length ; i++ )
 		{
 			if( locations[ i ].title.toLowerCase().indexOf( query.toLowerCase()) >=0 )
@@ -156,7 +152,6 @@ var appViewModel = {
             {
                 markers[ i ].setMap( null );
             }    
-
 		}	
 	},
 }
